@@ -8,8 +8,8 @@ const client = new Client({
 });
 
 // ─── CONFIG ───────────────────────────────────────────
-const LOG_CHANNEL_ID  = 'TON_ID_SALON_TEXTE';   // 🔁 à remplacer
-const STAFF_ROLE_ID   = 'TON_ID_ROLE_STAFF';     // 🔁 à remplacer
+const LOG_CHANNEL_ID  = process.env.LOG_CHANNEL_ID;
+const STAFF_ROLE_ID   = process.env.STAFF_ROLE_ID;
 // ──────────────────────────────────────────────────────
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
