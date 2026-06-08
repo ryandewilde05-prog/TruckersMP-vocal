@@ -93,5 +93,5 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
   await logChannel.send({ content, embeds: [embed] });
 });
 
-client.once('ready', () => console.log(`✅ Bot connecté : ${client.user.tag}`));
+client.once('clientReady', () => console.log(`✅ Bot connecté : ${client.user.tag}`));
 client.login(process.env.TOKEN);
