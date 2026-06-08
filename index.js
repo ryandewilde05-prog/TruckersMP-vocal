@@ -1,5 +1,4 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -10,9 +9,16 @@ const client = new Client({
 // ─── CONFIG ───────────────────────────────────────────
 const LOG_CHANNEL_ID  = process.env.LOG_CHANNEL_ID;
 const STAFF_ROLE_ID   = process.env.STAFF_ROLE_ID;
+const WATCHED_CHANNEL_ID = '1512229769339601037';
 // ──────────────────────────────────────────────────────
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
+  const isRelevant =
+    oldState.channelId === WATCHED_CHANNEL_ID ||
+    newState.channelId === WATCHED_CHANNEL_ID;
+
+  if (!isRelevant) return;
+
   const logChannel = newState.guild.channels.cache.get(LOG_CHANNEL_ID);
   if (!logChannel) return;
 
